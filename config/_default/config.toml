@@ -1,0 +1,4 @@
+baseURL = "http://raisingable.org/"
+languageCode = "en-us"
+title = "Raising Able - Podcast and News"
+theme = "ananke"
