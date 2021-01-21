@@ -2,18 +2,21 @@ name: Deploy
 
 on:
   push:
-    tags:
-      - v*
+    branches:
+      - SM-20
+#  registry_package:
+#    types: [published]
 
 env:
   IMAGE_NAME: core-website
   SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
+  CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
 
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull image
+      - name: Pull packages image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
