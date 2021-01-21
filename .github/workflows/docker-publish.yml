@@ -29,9 +29,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: GitHub Action for DigitalOcean - doctl
-        uses: digitalocean/action-doctl@v2.1.0
-
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
