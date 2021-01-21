@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    tags:
+      - v*
+
+env:
+  IMAGE_NAME: core-website
+  SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull image
+        run: |
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+          docker pull $IMAGE_ID:$VERSION
