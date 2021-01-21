@@ -29,6 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Checkout theme
+        run: git submodule update
+
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
