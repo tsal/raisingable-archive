@@ -91,7 +91,7 @@ jobs:
           apiVersion: extensions/v1beta1
           kind: Ingress
           metadata:
-            name: ${{ secrets.DEPLOYMENT_SLUG }}-ingress
+            name: raisingable-development-ingress
             annotations:
               nginx.ingress.kubernetes.io/enable-cors: "true"
               nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
