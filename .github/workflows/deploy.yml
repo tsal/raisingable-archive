@@ -1,9 +1,9 @@
 name: Deploy
 
 on:
-  registry_package:
-    types: [published]
-
+  push:
+    tags:
+      - v*
 env:
   IMAGE_NAME: core-website
   REGISTRY: ${{ secrets.PRODUCTION_REGISTRY }}
@@ -12,7 +12,6 @@ env:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
     steps:
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
