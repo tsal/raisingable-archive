@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     needs: test
-    name: Deploy
+    name: Build and Publish
 
     env:
       HUGO_ENV: "development"
@@ -80,6 +80,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: push
+    name: Deploy to Development
     steps:
       - name: Start GitHub deployment
         uses: bobheadxi/deployments@v0.4.3
