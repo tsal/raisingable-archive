@@ -152,6 +152,7 @@ jobs:
           EOF
           doctl kubernetes cluster kubeconfig save ${{ secrets.DEPLOYMENT_CLUSTER }}
           kubectl apply --validate=true --filename=deploy.yaml
+          kubectl rollout restart deployment.apps/raisingable-development
 
       - uses: "marvinpinto/action-automatic-releases@v1.1.0"
         with:
