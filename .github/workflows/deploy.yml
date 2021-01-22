@@ -1,11 +1,8 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - SM-20
-#  registry_package:
-#    types: [published]
+  registry_package:
+    types: [published]
 
 env:
   IMAGE_NAME: core-website
@@ -39,7 +36,7 @@ jobs:
         run: |
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          docker build . --tag $IMAGE_NAME:production --build-arg HUGO_ARGS=
+          docker build . --tag $IMAGE_NAME:production
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
