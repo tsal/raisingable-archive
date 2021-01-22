@@ -9,6 +9,8 @@ on:
 
 env:
   IMAGE_NAME: core-website
+  REGISTRY: ${{ secrets.PRODUCTION_REGISTRY }}
+  SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
 
 jobs:
   verify:
@@ -44,5 +46,5 @@ jobs:
           token: ${{ secrets.DOCTL_TOKEN }}
       - run: |
           doctl registry login
-          docker tag $IMAGE_NAME:production ${{ secrets.PRODUCTION_REGISTRY }}/${{ secrets.SERVICE_NAME }}-$IMAGE_NAME:production-$VERSION
-          docker push ${{ secrets.PRODUCTION_REGISTRY }}/${{ secrets.SERVICE_NAME }}-$IMAGE_NAME:production-$VERSION
+          docker tag $IMAGE_NAME:production $REGISTRY/$SERVICE_NAME-$IMAGE_NAME:production-$VERSION
+          docker push $REGISTRY/$SERVICE_NAME -$IMAGE_NAME:production-$VERSION
