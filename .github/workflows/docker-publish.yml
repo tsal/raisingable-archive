@@ -33,6 +33,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     needs: test
+    
+    env:
+      HUGO_ENV: "development"
 
     steps:
       - name: Checkout repository and submodules
@@ -41,7 +44,7 @@ jobs:
           submodules: recursive
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME
+        run: docker build . --file Dockerfile --tag $IMAGE_NAME --build-arg HUGO_ENV=$HUGO_ENV
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
