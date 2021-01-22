@@ -1,1 +1,2 @@
 baseURL = "https://dev.raisingable.org/"
+buildDrafts = true
