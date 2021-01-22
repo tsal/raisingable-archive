@@ -144,5 +144,5 @@ jobs:
                   - containerPort: 8080
           EOF
           doctl kubernetes cluster kubeconfig save ${{ secrets.DEPLOYMENT_CLUSTER }}
-          kubectl apply --validate=true --dry-run=true --filename=deploy.yaml
+          kubectl apply --validate=true --filename=deploy.yaml
 
