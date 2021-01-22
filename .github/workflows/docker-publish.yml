@@ -100,7 +100,7 @@ jobs:
               cert-manager.io/cluster-issuer: "letsencrypt-prod"
           spec:
             rules:
-            - host: api.outof.coffee
+            - host: dev.raisingable.org
               http:
                 paths:
                 - backend:
@@ -109,7 +109,7 @@ jobs:
             tls:
             - secretName: raisingable-development-cert
               hosts:
-                - api.outof.coffee
+                - dev.raisingable.org
           ---
           apiVersion: v1
           kind: Service
