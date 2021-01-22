@@ -2,7 +2,7 @@ name: Deploy to Cluster Services
 
 on:
   release:
-    types: [published]
+    types: [published, released]
     
 env:
   IMAGE_NAME: core-website
