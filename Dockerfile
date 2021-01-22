@@ -13,7 +13,7 @@ RUN apk add --update git asciidoctor libc6-compat libstdc++ \
     && apk add --no-cache ca-certificates
 ADD . /src
 WORKDIR /src
-RUN hugo
+RUN hugo -e production
 
 FROM nginx:alpine
 WORKDIR /public
