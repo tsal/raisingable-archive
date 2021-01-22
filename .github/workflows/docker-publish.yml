@@ -72,3 +72,77 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+  deploy:
+    runs-on: ubuntu-latest
+    needs: push
+    steps:
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DOCTL_TOKEN }}
+      - name: Kubectl install
+        uses: Azure/setup-kubectl@v1
+      - name: Deploy to development
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+          [ "$VERSION" == "main" ] && VERSION=latest
+          cat << EOF > deploy.yaml
+          apiVersion: extensions/v1beta1
+          kind: Ingress
+          metadata:
+            name: ${{ secrets.DEPLOYMENT_SLUG }}-ingress
+            annotations:
+              nginx.ingress.kubernetes.io/enable-cors: "true"
+              nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+              nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+              nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+              cert-manager.io/cluster-issuer: "letsencrypt-prod"
+          spec:
+            rules:
+            - host: api.outof.coffee
+              http:
+                paths:
+                - backend:
+                    serviceName: raisingable-development
+                    servicePort: 80
+            tls:
+            - secretName: raisingable-development-cert
+              hosts:
+                - api.outof.coffee
+          ---
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: raisingable-development
+          spec:
+            ports:
+            - port: 80
+              targetPort: 8080
+            selector:
+              app: raisingable-development
+          ---
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: raisingable-development
+          spec:
+            selector:
+              matchLabels:
+                app: raisingable-development
+            replicas: 1
+            template:
+              metadata:
+                labels:
+                  app: raisingable-development
+              spec:
+                containers:
+                - name: raisingable-development
+                  image: docker.pkg.github.com/raisingable/www/core-website:$VERSION
+                  imagePullPolicy: Always
+                  ports:
+                  - containerPort: 8080
+          EOF
+          doctl kubernetes cluster kubeconfig save ${{ secrets.DEPLOYMENT_CLUSTER }}
+          kubectl apply --validate=true --dry-run=true --filename=deploy.yaml
+
