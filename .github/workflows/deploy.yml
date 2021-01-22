@@ -1,9 +1,9 @@
 name: Deploy to Cluster Services
 
 on:
-  push:
-    tags:
-      - v*
+  release:
+    types: [published]
+    
 env:
   IMAGE_NAME: core-website
   REGISTRY: ${{ secrets.PRODUCTION_REGISTRY }}
@@ -13,6 +13,18 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
+      - uses: oprypin/find-latest-tag@v1
+        with:
+          repository: raisingable/www  # The repository to scan.
+          releases-only: true  # We know that all relevant tags have a GitHub release for them.
+        id: raisingable  # The step ID to refer to later.
+
+      - run: echo "raisingable-$IMAGE_NAME is at version ${{ steps.raisingable.outputs.tag }}"
+      - uses: actions/checkout@v2
+        with:
+          repository: raisingable/www
+          ref: ${{ steps.octokit.raisingable.tag }}
+
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - name: Pull packages image
