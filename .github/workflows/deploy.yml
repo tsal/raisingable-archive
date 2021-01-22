@@ -9,8 +9,6 @@ on:
 
 env:
   IMAGE_NAME: core-website
-  SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
-  CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
 
 jobs:
   verify:
@@ -26,3 +24,25 @@ jobs:
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
           docker pull $IMAGE_ID:$VERSION
+  productionize:
+    runs-on: ubuntu-latest
+    needs: verify
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          ref: "${{ github.ref }}"
+      - name: Build production container
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+          docker build . --file Dockerfile --build-arg "HUGO_ARGS=-e production" --tag $IMAGE_NAME:production
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DOCTL_TOKEN }}
+      - run: |
+          doctl registry login
+          docker tag $IMAGE_NAME:production ${{ secrets.PRODUCTION_REGISTRY }}/${{ secrets.SERVICE_NAME }}-$IMAGE_NAME:production-$VERSION
+          docker push ${{ secrets.PRODUCTION_REGISTRY }}/${{ secrets.SERVICE_NAME }}-$IMAGE_NAME:production-$VERSION
