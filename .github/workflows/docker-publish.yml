@@ -168,6 +168,7 @@ jobs:
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
+          env_url: https://dev.raisingable.org/
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
       - uses: "marvinpinto/action-automatic-releases@v1.1.0"
