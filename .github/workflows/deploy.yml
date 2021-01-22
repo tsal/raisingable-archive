@@ -39,12 +39,13 @@ jobs:
         run: |
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          docker build . --file Dockerfile --tag $IMAGE_NAME:production --build-arg 'HUGO_ARGS=-e production'
+          docker build . --tag $IMAGE_NAME:production --build-arg HUGO_ARGS=
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DOCTL_TOKEN }}
-      - run: |
+      - name: Publish
+        run: |
           doctl registry login
           docker tag $IMAGE_NAME:production $REGISTRY/$SERVICE_NAME-$IMAGE_NAME:production-$VERSION
           docker push $REGISTRY/$SERVICE_NAME-$IMAGE_NAME:production-$VERSION
