@@ -10,33 +10,8 @@ env:
   SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
 
 jobs:
-  verify:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: oprypin/find-latest-tag@v1
-        with:
-          repository: raisingable/www  # The repository to scan.
-          releases-only: true  # We know that all relevant tags have a GitHub release for them.
-        id: raisingable  # The step ID to refer to later.
-
-      - run: echo "raisingable-$IMAGE_NAME is at version ${{ steps.raisingable.outputs.tag }}"
-      - uses: actions/checkout@v2
-        with:
-          repository: raisingable/www
-          ref: ${{ steps.octokit.raisingable.tag }}
-
-      - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-      - name: Pull packages image
-        run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          docker pull $IMAGE_ID:$VERSION
   productionize:
     runs-on: ubuntu-latest
-    needs: verify
     steps:
       - name: Checkout repository and submodules
         uses: actions/checkout@v2
