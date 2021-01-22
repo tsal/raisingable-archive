@@ -129,7 +129,7 @@ jobs:
           spec:
             ports:
             - port: 80
-              targetPort: 8080
+              targetPort: 80
             selector:
               app: raisingable-development
           ---
@@ -152,7 +152,7 @@ jobs:
                   image: ${{ secrets.PRODUCTION_REGISTRY }}/raisingable-$IMAGE_NAME:development-$VERSION
                   imagePullPolicy: Always
                   ports:
-                  - containerPort: 8080
+                  - containerPort: 80
           EOF
           doctl kubernetes cluster kubeconfig save ${{ secrets.DEPLOYMENT_CLUSTER }}
           kubectl apply --validate=true --filename=deploy.yaml
