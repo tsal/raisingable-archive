@@ -2,9 +2,8 @@ name: Docker
 
 on:
   push:
-    # Publish `v1.2.3` tags as releases.
-    tags:
-      - v*
+    branches:
+      - main
 
   # Run tests for any PRs.
   pull_request:
@@ -149,3 +148,10 @@ jobs:
           doctl kubernetes cluster kubeconfig save ${{ secrets.DEPLOYMENT_CLUSTER }}
           kubectl apply --validate=true --filename=deploy.yaml
 
+      - uses: "marvinpinto/action-automatic-releases@v1.1.0"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+    
