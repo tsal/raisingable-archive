@@ -1,6 +1,0 @@
----
-outputs:
-- HTML
-- AMP
-- RSS
----

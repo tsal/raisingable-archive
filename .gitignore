@@ -1,4 +1,5 @@
 /public
+/themes
 ## Don't commit prod configuration, instead use automation / discovery
 config/production/*
 ## OS Files

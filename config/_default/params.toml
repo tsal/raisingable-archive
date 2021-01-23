@@ -1,0 +1,85 @@
+mainSections = ["episode"]
+episode_number_style  = "brackets"
+episode_number_prefix = "RACD"
+site_theme = "grey"
+# site_layout = "grid"
+site_layout = "row"
+show_next_upcoming = "true"
+enable_jumbo = "true"
+# enable_jumbo = "false"
+# truncate = "100"
+# about_logo = "/img/hugocast.png"
+copyright_notice = "Copyright 2021 [Raising Able](https://raisingable.org)"
+itunes_subscribe = "https://podcasts.apple.com/us/podcast/#placeholder"
+android_subscribe = "http://subscribeonandroid.com/#placeholder"
+spotify_subscribe = "https://open.spotify.com/show/#placeholder"
+google_play_subscribe = "https://podcasts.google.com/feed/#placeholder"
+stitcher_subscribe = "http://www.stitcher.com/podcast/#placeholder"
+soundcloud_subscribe = "http://feeds.soundcloud.com/users/soundcloud:users:#placeholder/sounds.rss"
+pocketcasts_subscribe = "http://pcasts.in/feed/feeds.soundcloud.com/users/soundcloud:users:#placeholder/sounds.rss"
+mailchimp_subscribe = "//placeholder.us3.list-manage.com/subscribe/post?u=placeholder&amp;id=placeholder"
+# rss_subscribe = "http://feed.com/myfeed" #only set this if you don't want to use the built-in feed
+description = "The description of our podcast is coming soon!"
+media_prefix = "https://placeholder.raisingable.org/media/caine-do/"
+disqusShortname = "caine-do"
+
+[params.feed]
+copyright = "Copyright 2021 Raising Able" #do not use markdown in this field; it is used in the feed
+itunes_subtitle = "Placeholder" #no markdown or HTML
+itunes_author = "Raising Able" #no markdown or HTML
+itunes_summary = "The description of our podcast is coming soon!" # Limited to 4000 characters or less, plain text, no HTML
+itunes_owner_name = "Michael King"
+itunes_owner_email = "tsalaroth@gmail.com" #contains the e-mail address that will be used to contact the owner of the Podcast for communication specifically about their Podcast on Apple Podcasts. It will not be publicly displayed on Apple Podcasts.
+itunes_image = "https://raisingable.org/placeholder.png" #fqdn to the image art for your podcast
+itunes_top_category = "Society & Culture"
+itunes_first_sub_category = "Comedy Interviews"
+itunes_second_sub_category = "Self-Improvement"
+language = "en-us"
+
+[params.realfavicongenerator] # https://realfavicongenerator.net/
+mask_icon_color="#5bbad5"
+msapplication_tilecolor="#2b5797"
+theme_color="#ffffff"
+
+[params.podlove] # https://subscribe-button.podlove.org
+subscribe_title = ""              # fallback: site title from above
+subscribe_subtitle = ""           # fallback: ""
+subscribe_description = ""        # fallback: ""
+subscribe_cover = "img/logo.jpg"  # fallback: ""
+subscribe_color = "#585e6c"       # fallback: ""
+subscribe_size = "medium"         # options: small, medium, big
+subscribe_format = "rectangle"    # options: rectangle, square, cover
+subscribe_style = "filled"        # options: filled, outline, frameless
+subscribe_language = "de"         # options: nl (dutch), en (english), eo (esperanto), de (german), fi (finnish), fr (french), ja (french)
+subscribe_feed_type = "audio"     # options: audio, video
+subscribe_feed_format = "mp3"     # options: mp3, aac, ogg, opus
+
+[params.social]
+github = "raisingable"
+twitter = "cainedo"
+twitter_domain = "raisingable.org" # This domain shows in twitter cards as "View on `twitter_domain`"
+youtube = "tsalaroth" # for now..
+twitch = "tsalaroth" # for now..
+
+[params.authors]
+[params.authors.Michael]
+name	= "Michael K"
+thumbnail = "img/host/tsal.png"
+bio = "He does things; some with horse racing, some with bourbon - both with code."
+[params.authors.Michael.social]
+github = "tsal"
+twitter = "movementengine"
+instagram = "instagram"
+youtube = "tsalaroth"
+twitch = "tsalaroth"
+[params.authors.Jay]
+name = "Jay E"
+thumbnail = "img/host/ay.png"
+bio = "He does things."
+[params.authors.Jay.social]
+github = ""
+
+[params.links]
+[params.links.ra]
+name = "Raising Able Podcasts"
+url = "https://raisingable.org"
