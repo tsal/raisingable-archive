@@ -1,4 +1,3 @@
 category = "categories"
-episode = "episodes"
-season = "seasons"
+series = "series"
 tag = "tags"

@@ -1,4 +1,22 @@
 baseURL = "https://raisingable.org/"
 languageCode = "en-us"
-title = "Raising Able - News and Podcasts"
-theme = "ananke"
+title = "Caine Do"
+theme = "castanet"
+googleAnalytics = ""
+paginate = "9"
+buildFuture = true
+
+[[Menu.Main]]
+name = "About"
+identifier = "about"
+url = "/about"
+
+[[Menu.Main]]
+name = "Hosts"
+identifier = "hosts"
+url = "/host"
+
+[[Menu.Main]]
+name = "Blog"
+identifier = "blog"
+url = "/blog"
