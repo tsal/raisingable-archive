@@ -107,10 +107,6 @@ jobs:
           metadata:
             name: raisingable-development-ingress
             annotations:
-              nginx.ingress.kubernetes.io/enable-cors: "true"
-              nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
-              nginx.ingress.kubernetes.io/cors-allow-origin: "*"
-              nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
               cert-manager.io/cluster-issuer: "letsencrypt-prod"
           spec:
             rules:
