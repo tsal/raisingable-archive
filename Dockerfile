@@ -17,7 +17,7 @@ RUN apk add --update git asciidoctor libc6-compat libstdc++ \
 ADD . /src
 WORKDIR /src
 RUN wget -O /tmp/castanet.zip https://github.com/mattstratton/castanet/releases/download/$CASTANET_VERSION/castanet-$CASTANET_VERSION.zip
-RUN unzip /tmp/castanet.zip -d themes/
+RUN unzip -o /tmp/castanet.zip -d themes/
 RUN hugo -e $HUGO_ENV
 
 FROM nginx:alpine
