@@ -1,6 +1,6 @@
 mainSections = ["episode"]
 episode_number_style  = "brackets"
-episode_number_prefix = "RACD"
+episode_number_prefix = "EP"
 site_theme = "grey"
 # site_layout = "grid"
 site_layout = "row"
