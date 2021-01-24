@@ -1,4 +1,4 @@
-baseURL = "https://raisingable.org/"
+baseURL = "http://raisingable/"
 languageCode = "en-us"
 title = "Caine Do"
 theme = "castanet"

@@ -1,0 +1,48 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: raisingable-development-ingress
+spec:
+  rules:
+  - host: raisingable
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: raisingable-development
+            port:
+              number: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: raisingable-development
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: raisingable-development
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: raisingable-development
+spec:
+  selector:
+    matchLabels:
+      app: raisingable-development
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: raisingable-development
+    spec:
+      containers:
+      - name: raisingable-development
+        image: localhost:32000/website:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
