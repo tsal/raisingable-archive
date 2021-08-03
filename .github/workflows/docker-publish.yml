@@ -12,7 +12,7 @@ on:
       - SM-*
 
 env:
-  IMAGE_NAME: core-website
+  IMAGE_NAME: podcast-site
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
@@ -75,8 +75,8 @@ jobs:
           docker push $IMAGE_ID:$VERSION
           # Cloud
           doctl registry login
-          docker tag $IMAGE_ID:$VERSION ${{ secrets.PRODUCTION_REGISTRY }}/raisingable-$IMAGE_NAME:development-$VERSION
-          docker push ${{ secrets.PRODUCTION_REGISTRY }}/raisingable-$IMAGE_NAME:development-$VERSION
+          docker tag $IMAGE_ID:$VERSION ${{ secrets.PRODUCTION_REGISTRY }}/village-$IMAGE_NAME:development-$VERSION
+          docker push ${{ secrets.PRODUCTION_REGISTRY }}/village-$IMAGE_NAME:development-$VERSION
 
   deploy:
     runs-on: ubuntu-latest
@@ -105,57 +105,57 @@ jobs:
           apiVersion: extensions/v1beta1
           kind: Ingress
           metadata:
-            name: raisingable-development-ingress
+            name: village-podcast-development-ingress
             annotations:
               cert-manager.io/cluster-issuer: "letsencrypt-prod"
           spec:
             rules:
-            - host: dev.raisingable.org
+            - host: dev.ittakesavillage.art
               http:
                 paths:
                 - backend:
-                    serviceName: raisingable-development
+                    serviceName: village-podcast-development
                     servicePort: 80
             tls:
-            - secretName: raisingable-development-cert
+            - secretName: village-podcast-development-cert
               hosts:
-                - dev.raisingable.org
+                - dev.ittakesavillage.art
           ---
           apiVersion: v1
           kind: Service
           metadata:
-            name: raisingable-development
+            name: village-podcast-development
           spec:
             ports:
             - port: 80
               targetPort: 80
             selector:
-              app: raisingable-development
+              app: village-podcast-development
           ---
           apiVersion: apps/v1
           kind: Deployment
           metadata:
-            name: raisingable-development
+            name: village-podcast-development
           spec:
             selector:
               matchLabels:
-                app: raisingable-development
+                app: village-podcast-development
             replicas: 1
             template:
               metadata:
                 labels:
-                  app: raisingable-development
+                  app: village-podcast-development
               spec:
                 containers:
-                - name: raisingable-development
-                  image: ${{ secrets.PRODUCTION_REGISTRY }}/raisingable-$IMAGE_NAME:development-$VERSION
+                - name: village-podcast-development
+                  image: ${{ secrets.PRODUCTION_REGISTRY }}/village-$IMAGE_NAME:development-$VERSION
                   imagePullPolicy: Always
                   ports:
                   - containerPort: 80
           EOF
           doctl kubernetes cluster kubeconfig save ${{ secrets.DEPLOYMENT_CLUSTER }}
           kubectl apply --validate=true --filename=deploy.yaml
-          kubectl rollout restart deployment.apps/raisingable-development
+          kubectl rollout restart deployment.apps/village-podcast-development
 
       - name: Update GitHub deployment
         uses: bobheadxi/deployments@v0.4.3
@@ -164,7 +164,7 @@ jobs:
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
-          env_url: https://dev.raisingable.org/
+          env_url: https://dev.ittakesavillage.art/
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
       - uses: "marvinpinto/action-automatic-releases@v1.1.0"
