@@ -9,8 +9,8 @@ enable_jumbo = "true"
 # enable_jumbo = "false"
 # truncate = "100"
 # about_logo = "/img/hugocast.png"
-copyright_notice = "Copyright 2021 [Raising Able](https://raisingable.org)"
-itunes_subscribe = "https://podcasts.apple.com/us/podcast/#placeholder"
+copyright_notice = "Copyright 2021 [It Takes a Village](https://ittakesavillage.art)"
+itunes_subscribe = "https://podcasts.apple.com/us/channel/it-takes-a-village/id6442563145?ign-mpt=uo%3D4&mt=2"
 android_subscribe = "http://subscribeonandroid.com/#placeholder"
 spotify_subscribe = "https://open.spotify.com/show/#placeholder"
 google_play_subscribe = "https://podcasts.google.com/feed/#placeholder"
@@ -20,20 +20,20 @@ pocketcasts_subscribe = "http://pcasts.in/feed/feeds.soundcloud.com/users/soundc
 mailchimp_subscribe = "//placeholder.us3.list-manage.com/subscribe/post?u=placeholder&amp;id=placeholder"
 # rss_subscribe = "http://feed.com/myfeed" #only set this if you don't want to use the built-in feed
 description = "The description of our podcast is coming soon!"
-media_prefix = "https://placeholder.raisingable.org/media/caine-do/"
-disqusShortname = "caine-do"
+media_prefix = "https://media.ittakesavillage.art/media/episodes/"
+disqusShortname = "a-village-podcast"
 
 [params.feed]
-copyright = "Copyright 2021 Raising Able" #do not use markdown in this field; it is used in the feed
-itunes_subtitle = "Placeholder" #no markdown or HTML
-itunes_author = "Raising Able" #no markdown or HTML
+copyright = "Copyright 2021 It Takes a Village" #do not use markdown in this field; it is used in the feed
+itunes_subtitle = "Conversations about Community and Community-Building" #no markdown or HTML
+itunes_author = "It Takes a Village" #no markdown or HTML
 itunes_summary = "The description of our podcast is coming soon!" # Limited to 4000 characters or less, plain text, no HTML
-itunes_owner_name = "Michael King"
+itunes_owner_name = "It Takes a Village"
 itunes_owner_email = "tsalaroth@gmail.com" #contains the e-mail address that will be used to contact the owner of the Podcast for communication specifically about their Podcast on Apple Podcasts. It will not be publicly displayed on Apple Podcasts.
-itunes_image = "https://raisingable.org/placeholder.png" #fqdn to the image art for your podcast
+itunes_image = "https://ittakesavillage.art/placeholder.png" #fqdn to the image art for your podcast
 itunes_top_category = "Society & Culture"
-itunes_first_sub_category = "Comedy Interviews"
-itunes_second_sub_category = "Self-Improvement"
+itunes_first_sub_category = "None"
+itunes_second_sub_category = "Kids & Family"
 language = "en-us"
 
 [params.realfavicongenerator] # https://realfavicongenerator.net/
@@ -56,8 +56,8 @@ subscribe_feed_format = "mp3"     # options: mp3, aac, ogg, opus
 
 [params.social]
 github = "raisingable"
-twitter = "cainedo"
-twitter_domain = "raisingable.org" # This domain shows in twitter cards as "View on `twitter_domain`"
+twitter = "avillagepodcast"
+twitter_domain = "ittakesavillage.art" # This domain shows in twitter cards as "View on `twitter_domain`"
 youtube = "tsalaroth" # for now..
 twitch = "tsalaroth" # for now..
 
@@ -68,18 +68,15 @@ thumbnail = "img/host/tsal.png"
 bio = "He does things; some with horse racing, some with bourbon - both with code."
 [params.authors.Michael.social]
 github = "tsal"
-twitter = "movementengine"
+twitter = "avillagepodcast"
 instagram = "instagram"
 youtube = "tsalaroth"
 twitch = "tsalaroth"
-[params.authors.Jay]
-name = "Jay E"
-thumbnail = "img/host/ay.png"
-bio = "He does things."
-[params.authors.Jay.social]
-github = ""
 
 [params.links]
-[params.links.ra]
-name = "Raising Able Podcasts"
-url = "https://raisingable.org"
+[params.links.itav]
+name = "It Takes a Village"
+url = "https://ittakesavillage.art"
+[params.links.itunes]
+name = "It Takes a Village on Apple Podcasts"
+url = ""
