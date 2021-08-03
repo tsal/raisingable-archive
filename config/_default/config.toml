@@ -1,6 +1,6 @@
-baseURL = "http://raisingable/"
+baseURL = "http://ittakesavillage/"
 languageCode = "en-us"
-title = "Caine Do"
+title = "It Takes a Village"
 theme = "castanet"
 googleAnalytics = ""
 paginate = "9"
