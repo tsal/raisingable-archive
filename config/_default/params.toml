@@ -11,15 +11,15 @@ enable_jumbo = "true"
 # about_logo = "/img/hugocast.png"
 copyright_notice = "Copyright 2021 [It Takes a Village](https://ittakesavillage.art)"
 itunes_subscribe = "https://podcasts.apple.com/us/channel/it-takes-a-village/id6442563145?ign-mpt=uo%3D4&mt=2"
-android_subscribe = "http://subscribeonandroid.com/#placeholder"
-spotify_subscribe = "https://open.spotify.com/show/#placeholder"
-google_play_subscribe = "https://podcasts.google.com/feed/#placeholder"
-stitcher_subscribe = "http://www.stitcher.com/podcast/#placeholder"
-soundcloud_subscribe = "http://feeds.soundcloud.com/users/soundcloud:users:#placeholder/sounds.rss"
-pocketcasts_subscribe = "http://pcasts.in/feed/feeds.soundcloud.com/users/soundcloud:users:#placeholder/sounds.rss"
-mailchimp_subscribe = "//placeholder.us3.list-manage.com/subscribe/post?u=placeholder&amp;id=placeholder"
+# android_subscribe = "http://subscribeonandroid.com/#placeholder"
+# spotify_subscribe = "https://open.spotify.com/show/#placeholder"
+# google_play_subscribe = "https://podcasts.google.com/feed/#placeholder"
+# stitcher_subscribe = "http://www.stitcher.com/podcast/#placeholder"
+# soundcloud_subscribe = "http://feeds.soundcloud.com/users/soundcloud:users:#placeholder/sounds.rss"
+# pocketcasts_subscribe = "http://pcasts.in/feed/feeds.soundcloud.com/users/soundcloud:users:#placeholder/sounds.rss"
+# mailchimp_subscribe = "//placeholder.us3.list-manage.com/subscribe/post?u=placeholder&amp;id=placeholder"
 # rss_subscribe = "http://feed.com/myfeed" #only set this if you don't want to use the built-in feed
-description = "The description of our podcast is coming soon!"
+description = "Conversations about community and community-building."
 media_prefix = "https://media.ittakesavillage.art/media/episodes/"
 disqusShortname = "a-village-podcast"
 
@@ -27,7 +27,7 @@ disqusShortname = "a-village-podcast"
 copyright = "Copyright 2021 It Takes a Village" #do not use markdown in this field; it is used in the feed
 itunes_subtitle = "Conversations about Community and Community-Building" #no markdown or HTML
 itunes_author = "It Takes a Village" #no markdown or HTML
-itunes_summary = "The description of our podcast is coming soon!" # Limited to 4000 characters or less, plain text, no HTML
+itunes_summary = "Conversations about community and community-building." # Limited to 4000 characters or less, plain text, no HTML
 itunes_owner_name = "It Takes a Village"
 itunes_owner_email = "tsalaroth@gmail.com" #contains the e-mail address that will be used to contact the owner of the Podcast for communication specifically about their Podcast on Apple Podcasts. It will not be publicly displayed on Apple Podcasts.
 itunes_image = "https://ittakesavillage.art/placeholder.png" #fqdn to the image art for your podcast
@@ -35,24 +35,6 @@ itunes_top_category = "Society & Culture"
 itunes_first_sub_category = "None"
 itunes_second_sub_category = "Kids & Family"
 language = "en-us"
-
-[params.realfavicongenerator] # https://realfavicongenerator.net/
-mask_icon_color="#5bbad5"
-msapplication_tilecolor="#2b5797"
-theme_color="#ffffff"
-
-[params.podlove] # https://subscribe-button.podlove.org
-subscribe_title = ""              # fallback: site title from above
-subscribe_subtitle = ""           # fallback: ""
-subscribe_description = ""        # fallback: ""
-subscribe_cover = "img/logo.jpg"  # fallback: ""
-subscribe_color = "#585e6c"       # fallback: ""
-subscribe_size = "medium"         # options: small, medium, big
-subscribe_format = "rectangle"    # options: rectangle, square, cover
-subscribe_style = "filled"        # options: filled, outline, frameless
-subscribe_language = "de"         # options: nl (dutch), en (english), eo (esperanto), de (german), fi (finnish), fr (french), ja (french)
-subscribe_feed_type = "audio"     # options: audio, video
-subscribe_feed_format = "mp3"     # options: mp3, aac, ogg, opus
 
 [params.social]
 github = "raisingable"
