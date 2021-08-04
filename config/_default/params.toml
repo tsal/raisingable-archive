@@ -20,7 +20,7 @@ itunes_subscribe = "https://podcasts.apple.com/us/channel/it-takes-a-village/id6
 # mailchimp_subscribe = "//placeholder.us3.list-manage.com/subscribe/post?u=placeholder&amp;id=placeholder"
 # rss_subscribe = "http://feed.com/myfeed" #only set this if you don't want to use the built-in feed
 description = "Conversations about community and community-building."
-media_prefix = "https://media.ittakesavillage.art/media/episodes/"
+media_prefix = "https://media.ittakesavillage.art/episodes/"
 disqusShortname = "a-village-podcast"
 
 [params.feed]
