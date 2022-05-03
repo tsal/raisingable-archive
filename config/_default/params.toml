@@ -9,7 +9,7 @@ enable_jumbo = "true"
 # enable_jumbo = "false"
 # truncate = "100"
 # about_logo = "/img/hugocast.png"
-copyright_notice = "Copyright 2021 [It Takes a Village](https://ittakesavillage.art)"
+copyright_notice = "Copyright 2022 [It Takes a Village](https://ittakesavillage.art)"
 itunes_subscribe = "https://podcasts.apple.com/us/channel/it-takes-a-village/id6442563145?ign-mpt=uo%3D4&mt=2"
 # android_subscribe = "http://subscribeonandroid.com/#placeholder"
 # spotify_subscribe = "https://open.spotify.com/show/#placeholder"
@@ -24,7 +24,7 @@ media_prefix = "https://media.ittakesavillage.art/"
 disqusShortname = "a-village-podcast"
 
 [params.feed]
-copyright = "Copyright 2021 It Takes a Village" #do not use markdown in this field; it is used in the feed
+copyright = "Copyright 2022 It Takes a Village" #do not use markdown in this field; it is used in the feed
 itunes_subtitle = "Conversations about Community and Community-Building" #no markdown or HTML
 itunes_author = "It Takes a Village" #no markdown or HTML
 itunes_summary = "Conversations about community and community-building." # Limited to 4000 characters or less, plain text, no HTML
